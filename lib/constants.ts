@@ -1,0 +1,51 @@
+export const events = [
+  {
+    image: '/images/event1.png',
+    title: 'React Conf 2025',
+    slug: 'react-conf-2025',
+    location: 'San Francisco, CA',
+    date: 'March 15, 2025',
+    time: '9:00 AM - 6:00 PM',
+  },
+  {
+    image: '/images/event2.png',
+    title: 'Next.js Conf',
+    slug: 'nextjs-conf',
+    location: 'San Francisco, CA',
+    date: 'October 28, 2025',
+    time: '10:00 AM - 5:00 PM',
+  },
+  {
+    image: '/images/event3.png',
+    title: 'JSConf EU 2025',
+    slug: 'jsconf-eu-2025',
+    location: 'Berlin, Germany',
+    date: 'June 2-4, 2025',
+    time: '9:00 AM - 6:00 PM',
+  },
+  {
+    image: '/images/event4.png',
+    title: 'DevWorld Hackathon',
+    slug: 'devworld-hackathon',
+    location: 'New York, NY',
+    date: 'April 20-21, 2025',
+    time: '24 Hours',
+  },
+  {
+    image: '/images/event5.png',
+    title: 'TypeScript Meetup',
+    slug: 'typescript-meetup',
+    location: 'Seattle, WA',
+    date: 'February 12, 2025',
+    time: '6:00 PM - 9:00 PM',
+  },
+  {
+    image: '/images/event6.png',
+    title: 'Web3 Summit',
+    slug: 'web3-summit',
+    location: 'Austin, TX',
+    date: 'May 8-10, 2025',
+    time: '9:00 AM - 7:00 PM',
+  },
+];
+
