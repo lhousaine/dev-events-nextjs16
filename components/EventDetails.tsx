@@ -88,7 +88,13 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
 
   const bookings = 10;
 
-  const similarEvents: IEvent[] = await getSimilarEventsBySlug(slug);
+  let similarEvents: IEvent[] = [];
+  try {
+    similarEvents = (await getSimilarEventsBySlug(slug)) as unknown as IEvent[];
+  } catch (error) {
+    console.error('Error fetching similar events:', error);
+    // During build time, if the database isn't available, similarEvents will be empty
+  }
 
   return (
     <section id='event'>
