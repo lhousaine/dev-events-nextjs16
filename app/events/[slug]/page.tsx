@@ -1,11 +1,15 @@
 import { Suspense } from 'react';
 import EventDetails from '@/components/EventDetails';
+import { cacheLife } from 'next/cache';
 
 const EventDetailsPage = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) => {
+  'use cache';
+  cacheLife('hours');
+
   const slug = params.then((p) => p.slug);
 
   return (
