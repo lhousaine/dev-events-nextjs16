@@ -2,12 +2,31 @@ import ExploreBtn from '@/components/ExploreBtn';
 import EventCard from '@/components/EventCard';
 import { IEvent } from '@/database';
 import { cacheLife } from 'next/cache';
-import { getAllEvents } from '@/lib/actions/event.actions';
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const Page = async () => {
   'use cache';
   cacheLife('hours');
-  const events = await getAllEvents();
+  let events: IEvent[] = [];
+
+  try {
+    const response = await fetch(`${BASE_URL}/api/events`, {
+      next: { revalidate: 3600 }, // Revalidate every hour
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      events = data.events || [];
+    }
+  } catch (error) {
+    console.error('Failed to fetch events:', error);
+
+    // During build time, if the server isn't running, events will be empty
+
+    // This allows the build to complete successfully
+  }
 
   return (
     <section>
