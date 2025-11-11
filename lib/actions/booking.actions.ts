@@ -1,6 +1,7 @@
 'use server';
 
 import Booking from '@/database/booking.model';
+
 import connectDB from '@/lib/mongodb';
 
 export const createBooking = async ({
@@ -20,6 +21,6 @@ export const createBooking = async ({
     return { success: true };
   } catch (e) {
     console.error('create booking failed', e);
-    return { success: false, error: e };
+    return { success: false };
   }
 };

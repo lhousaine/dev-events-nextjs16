@@ -5,18 +5,18 @@ import LightRays from '@/components/LightRays';
 import Navbar from '@/components/Navbar';
 
 const schibstedGrotesk = Schibsted_Grotesk({
-  variable: '--font-schibsted_grotesk',
+  variable: '--font-schibsted-grotesk',
   subsets: ['latin'],
 });
 
 const martianMono = Martian_Mono({
-  variable: '--font-martian_mono',
+  variable: '--font-martian-mono',
   subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
   title: 'DevEvent',
-  description: 'The Hub for every Dev Event You must not Miss',
+  description: "The Hub for Every Dev Event You Mustn't Miss",
 };
 
 export default function RootLayout({
@@ -43,7 +43,7 @@ export default function RootLayout({
             distortion={0.01}
           />
         </div>
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

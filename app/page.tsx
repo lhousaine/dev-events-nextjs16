@@ -1,29 +1,18 @@
 import ExploreBtn from '@/components/ExploreBtn';
 import EventCard from '@/components/EventCard';
 import { IEvent } from '@/database';
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { cacheLife } from 'next/cache';
+import { getAllEvents } from '@/lib/actions/event.actions';
 
 const Page = async () => {
-  let events: IEvent[] = [];
-  try {
-    const response = await fetch(`${BASE_URL}/api/events`, {
-      next: { revalidate: 3600 }, // Revalidate every hour
-    });
-    if (response.ok) {
-      const data = await response.json();
-      events = data.events || [];
-    }
-  } catch (error) {
-    console.error('Failed to fetch events:', error);
-    // During build time, if the server isn't running, events will be empty
-    // This allows the build to complete successfully
-  }
+  'use cache';
+  cacheLife('hours');
+  const events = await getAllEvents();
 
   return (
     <section>
       <h1 className='text-center'>
-        The Hub for Every Dev <br /> Event You Can&apos;t Miss
+        The Hub for Every Dev <br /> Event You Can't Miss
       </h1>
       <p className='text-center mt-5'>
         Hackathons, Meetups, and Conferences, All in One Place
